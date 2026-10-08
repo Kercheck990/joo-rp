@@ -1,0 +1,19 @@
+{
+  "cache": [],
+  "cacheMode": [],
+  "cdnCache": "",
+  "cdnLauncher": "",
+  "rss": "",
+  "versionHash": "joo-rp-mobile-0.1.0",
+  "packageName": "com.joorp.mobile",
+  "projectName": "Joo RP",
+  "servers": [],
+  "launcher": {
+    "appVersion": "0.1.0",
+    "name": "JooRP-Mobile.apk",
+    "hash": "",
+    "bytes": 0,
+    "size": "0 MB"
+  },
+  "filesContinue": []
+}
