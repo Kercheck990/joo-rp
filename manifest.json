@@ -1,0 +1,600 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "cef/assets/joorp/app.js",
+      "url": "app.js",
+      "size": 2812,
+      "sha256": "39b501a4bc74c11aeb2aa4ae1e2e68bd64bec1294445575b0abb938a6429b617",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/dialog.css",
+      "url": "dialog.css",
+      "size": 1154,
+      "sha256": "4dab67aa8af0ff46137245bc20127002d883485f8c2672418e5630e8f005460c",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/dialog.html",
+      "url": "dialog.html",
+      "size": 603,
+      "sha256": "3103e1ea5f40fdd360accf36f6e4dfbf488fa76d1af2ee47d16fc53794efae1c",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/dialog.js",
+      "url": "dialog.js",
+      "size": 975,
+      "sha256": "1bfd51156b3160ef60224af3ef6554c51105a48f07f63502d2eaf80756130ae1",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/index.html",
+      "url": "index.html",
+      "size": 2905,
+      "sha256": "4b953f14834a30153b38ce5c19d5262652151041c19237bd391c5980c65e0565",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/inventory.css",
+      "url": "inventory.css",
+      "size": 2254,
+      "sha256": "35abf8457cc0f50913be8354035728f3f912f11f984cbd15da69bed5502aa09d",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/inventory.html",
+      "url": "inventory.html",
+      "size": 1546,
+      "sha256": "118daadd7c931b9a089b11b436f7bae65c206417d405bbadf6df832b5bbd9157",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/inventory.js",
+      "url": "inventory.js",
+      "size": 1122,
+      "sha256": "7aa29a2f27eb058b8e87b2942508ce08d8c756631b85f61701467c55081938b6",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/menu.css",
+      "url": "menu.css",
+      "size": 2504,
+      "sha256": "e503cebb7113a47145b799a4a6962035e8eb9b42f96548193de3c216e550fdd1",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/menu.html",
+      "url": "menu.html",
+      "size": 1639,
+      "sha256": "d80b501c9b109b9be36a52155b1ff88e8eb44cd5582bd9ce95933f3adabdb67a",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/menu.js",
+      "url": "menu.js",
+      "size": 850,
+      "sha256": "74060d7355c8214340a62428081af00fc74c0cb906cb507cbfc523435ce4c736",
+      "platform": "all"
+    },
+    {
+      "path": "cef/assets/joorp/style.css",
+      "url": "style.css",
+      "size": 4596,
+      "sha256": "f5a2892e81f0402cd366f6c990926a12697aec0aabf2b4f473d4514764a82c03",
+      "platform": "all"
+    },
+    {
+      "path": "cef/cef.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__cef.pak",
+      "size": 2035201,
+      "sha256": "c23a94578ab7da85cd61f3e9eb0f925a45c5052b573b65faf80fda6d4308351a",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/cef_100_percent.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__cef_100_percent.pak",
+      "size": 216134,
+      "sha256": "4001a2772179c9db1f43835dbaa57c3a7fcdfc77c79569c82b0d57f8e0004a79",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/cef_200_percent.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__cef_200_percent.pak",
+      "size": 292040,
+      "sha256": "348c5316b0c64980a9881272fe10bb39887b328ff4f705cdf268fcc7efb4c13d",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/cef_extensions.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__cef_extensions.pak",
+      "size": 1288420,
+      "sha256": "0ab13a2b1adae24fa8f10393b84522c2d7c7e81b26f98e68d3b17b802444e41a",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/chrome_elf.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__chrome_elf.dll",
+      "size": 884736,
+      "sha256": "7879f10178b3a73bb373f9f64808ba55b981aa647cbfdeb9b0fd9bbc8834fef3",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/client.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__client.dll",
+      "size": 3014656,
+      "sha256": "db41124bf2a55e2fca66cdb7fb217a9f2068fd1a9b2706220bebc1ecdf2f4fb8",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/d3dcompiler_47.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__d3dcompiler_47.dll",
+      "size": 3657992,
+      "sha256": "8bf0eeb5081d8397e2f84f69449c8a80d9c0cdcf82bcef7a484309046adcb081",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/devtools_resources.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__devtools_resources.pak",
+      "size": 2280965,
+      "sha256": "8b50cfbff2dc704c4584dc79e896a26c715bcceba850770c59e170737a9cafc4",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/icudtl.dat",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__icudtl.dat",
+      "size": 10412752,
+      "sha256": "02db39ba465fc8b7a4cd280732760f29911edde87b331bf7cea7677e94d483e0",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/libcef.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__libcef.dll",
+      "size": 124659712,
+      "sha256": "0036658fddc75347d2ed67eae1db0e3eff041cc59387eaec0f9bc758c430fa8b",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/libegl.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__libegl.dll",
+      "size": 322048,
+      "sha256": "e499214421b5b5d89431d7c6bf020d629d4f6fc7177bfa02f072ce00442c6955",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/libglesv2.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__libglesv2.dll",
+      "size": 5751296,
+      "sha256": "be08473b32525dfcea58b47814a6c2783951ecbb34d7824f4352e65be918a856",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/am.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__am.pak",
+      "size": 444079,
+      "sha256": "381cad8ddac03c619c4d70ad666b4fef46d1058dd8b5e6a6b7251bb7402b0ee4",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ar.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ar.pak",
+      "size": 469793,
+      "sha256": "bfadf577e2ca0599bc8d8be63e3876bc853099b25c51655e6630054e02a2bd31",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/bg.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__bg.pak",
+      "size": 505282,
+      "sha256": "b4c3a935bcfb6cbd93c1a9d6ae47ce1d5f2ee2e3a774c307ce72b5a2e32023df",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/bn.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__bn.pak",
+      "size": 658618,
+      "sha256": "8fc9b213eae378d8a11fba68a14f80ea3a846fac71ff5b96623d2a3af0d3104e",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ca.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ca.pak",
+      "size": 312334,
+      "sha256": "9a2e60711234b164f0bfe3e4a4c79447c15902e800c49529c6ee7be5176232b1",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/cs.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__cs.pak",
+      "size": 319299,
+      "sha256": "1989440abc9f007198dac50de061d8877b0004bfc0d87813f0527f340960f608",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/da.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__da.pak",
+      "size": 287900,
+      "sha256": "cd8e4303b0ceb480fae44679c29724599759042bb041d30ae00c69fb0c0ff413",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/de.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__de.pak",
+      "size": 310366,
+      "sha256": "aa613947b4ef0eb91f61b8c4d0f1f1174549cb0ad18321332dfbca55e2ef128e",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/el.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__el.pak",
+      "size": 553567,
+      "sha256": "a4b9a241a841ff64a02003d3be9de4f9627110aef3bf02576fb6e9531acced24",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/en-GB.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__en-GB.pak",
+      "size": 253532,
+      "sha256": "c7ec2d3c011b8dd15cbf951fc2f3ac71155c3bb39132fbb66b66185893287398",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/en-US.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__en-US.pak",
+      "size": 256379,
+      "sha256": "0a3174f8a8f1e9695b5ab5b11d78d6f1e821197a774f77189bd190961eed1b9f",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/es-419.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__es-419.pak",
+      "size": 306363,
+      "sha256": "ba7f4ce166fcf33bc42b8914a17a61ed429471c33cc11f37b60358ac4f90b6f3",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/es.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__es.pak",
+      "size": 309268,
+      "sha256": "cfce619c7de81b4597bbaefee0e718cb023bc2ae61d701ab704a689f43c33de9",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/et.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__et.pak",
+      "size": 276989,
+      "sha256": "e7ec86f94264d748a4a00beb88a4b21cd51949464e16fbf7dfe5bf6b8f3937aa",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/fa.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__fa.pak",
+      "size": 446748,
+      "sha256": "4aaebc0f36e9b3f086b8ceff648b091174574a8f7b34b93fa40ce5218e33e914",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/fi.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__fi.pak",
+      "size": 285096,
+      "sha256": "0354e3d17e50a7efd7ac22e0386e7fe4b5b7bf6ca5c514b5760c767958681015",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/fil.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__fil.pak",
+      "size": 318109,
+      "sha256": "a53194b1408a0f2a5b7942d2ddd691fae11e52410f43d5354c0dcba3093add0f",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/fr.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__fr.pak",
+      "size": 337294,
+      "sha256": "ceb28f9b984140d0b6393ce71417d6dda804f0a4501ff9261bc7d31db8c6da68",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/gu.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__gu.pak",
+      "size": 629681,
+      "sha256": "77c729ca60de06af10ebaefbfc79f5e5a0e5ba5e81e7eb8d09a17db3f182dc35",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/he.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__he.pak",
+      "size": 390944,
+      "sha256": "4696b0a0e0ca816007ec49ae90a374d269ab6344474bb17c29c1cedca560f88a",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/hi.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__hi.pak",
+      "size": 653751,
+      "sha256": "f8b7860666a0c897ccccb1878cd1a4d0c49c0e1e20dbe15b66f8e7a3d55c40d0",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/hr.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__hr.pak",
+      "size": 306387,
+      "sha256": "579fac0cd9e58c7ed46a962d195a9b9e8d8b11c07d80514eb01fce4034c3fdf1",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/hu.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__hu.pak",
+      "size": 329303,
+      "sha256": "19654a6133f7496e446fc823e3109755dffefa7e88b5e64ef057722c638d7502",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/id.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__id.pak",
+      "size": 274510,
+      "sha256": "a9b2e69ef3b3cb42987d2c3fc60235b246ef9a867440af5b4f3ec4adc208457b",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/it.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__it.pak",
+      "size": 301427,
+      "sha256": "3be6a243053269d1fc5ecedd3834ed30084765af5e9993d407ec50bd728fa0e7",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ja.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ja.pak",
+      "size": 373948,
+      "sha256": "729a34f03449b79653fc2f822016f1aa146aa31d12dd1d6f00cd836b9da89757",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/kn.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__kn.pak",
+      "size": 733455,
+      "sha256": "fcaf8ae83f901c00df52b4b83c27f85ae389dc59405b778eb001e73e421fa3b6",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ko.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ko.pak",
+      "size": 313442,
+      "sha256": "7d1004e2a299bce765141eee71361604598790678fe560e7f7e6ad26480c5784",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/lt.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__lt.pak",
+      "size": 330592,
+      "sha256": "4eba2b238b9bd05a259e51ab83c21d51c52cb7b10c9a5cc60794f510385b0d8a",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/lv.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__lv.pak",
+      "size": 328259,
+      "sha256": "2dfb20cbc30b879279090a05f1d8eabf2679ff69dd1964d689ddddd007f3f7c1",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ml.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ml.pak",
+      "size": 770182,
+      "sha256": "46caa5665b59bd16de6ca531a44e7844a1052370bbb4289ba496f34ee3f9361e",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/mr.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__mr.pak",
+      "size": 615779,
+      "sha256": "cb6dcd59ff14fc33d867262927eb016af44233d2f90ceb28857bf87ae4d0daae",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ms.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ms.pak",
+      "size": 286331,
+      "sha256": "5f3268d5adeb4fd90d25264d65169326f700087ba619a83b4f6959ad02276d2f",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/nb.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__nb.pak",
+      "size": 280459,
+      "sha256": "39be45354811e6bcf2bccdfedde59133f2edcbcb1d04104a8938be5c0d86dfb6",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/nl.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__nl.pak",
+      "size": 291740,
+      "sha256": "12514445e34837bb40f0871cf82dc40b1444e9ad5f6110cc2a2d948deea079af",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/pl.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__pl.pak",
+      "size": 319603,
+      "sha256": "fbe37c4dfdf903d682dea00a7d79abc7ba99cd80a375fb3853f4e3425d6b8273",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/pt-BR.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__pt-BR.pak",
+      "size": 302233,
+      "sha256": "1ed7e36920a9876b67f5efaf5aeb737bcdff5ff55da7bdf370ade956c2d10169",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/pt-PT.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__pt-PT.pak",
+      "size": 306572,
+      "sha256": "fcced49d0667d3ce2afd16a335ae09edc54493234d16dabb0331a1d0a4c5e315",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ro.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ro.pak",
+      "size": 314280,
+      "sha256": "81c8832d4d5cd1549fd8340a8d7b30f5f641f2de92fb330ecfe747ee62339725",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ru.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ru.pak",
+      "size": 505289,
+      "sha256": "a6975dfeb4481fda85b34c64ff0d3a80330bc8271d3fd414b6f89dd9295b178b",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/sk.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__sk.pak",
+      "size": 324652,
+      "sha256": "49bbf36e986a6c435267593156777e566496e25b8b1f7516bf4fa159f147f7ee",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/sl.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__sl.pak",
+      "size": 310929,
+      "sha256": "e11724a0db3f079de7b44344d930cd30d20b531c0ea2889d52c51d1eda071673",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/sr.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__sr.pak",
+      "size": 477453,
+      "sha256": "e120fdf770b7f198da6b85a2eefbe51cfd855f65f39b4632c830e76952e381e7",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/sv.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__sv.pak",
+      "size": 282058,
+      "sha256": "4f4c30ba4ed9d7d2c604ce547485aee323d1b0e189a3c982de0fe70fc97f6caa",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/sw.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__sw.pak",
+      "size": 289557,
+      "sha256": "cd40493bef1ba2ff0603ac9b9f95d353e0884bc117b83e857888197db51849a0",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/ta.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__ta.pak",
+      "size": 742549,
+      "sha256": "5d69b2210778d1b3197d4d3c5c24f3b2db18c976f153be788443e980b6ff983c",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/te.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__te.pak",
+      "size": 693974,
+      "sha256": "891003154fe032929c353789f5b606e987617d3f00af8329f7f6f63a6414497d",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/th.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__th.pak",
+      "size": 587763,
+      "sha256": "4ec8f7477bd575cfad100026b1cf4a8b21f55986921558ddc69005e9f7db419f",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/tr.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__tr.pak",
+      "size": 300231,
+      "sha256": "2c83ba9945c02621c8b34d945e3c4a4c151903976bccee05cd2fa3bad325dfba",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/uk.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__uk.pak",
+      "size": 503364,
+      "sha256": "55f970da1a9708f751bf18aa788c7abf7e7ad7944e0790a51cc786de5ad29008",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/vi.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__vi.pak",
+      "size": 351397,
+      "sha256": "6462c45fef8f035dc8777e682effc3b85cd40b1eec62fbe84da781cf2cf33ef1",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/zh-CN.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__zh-CN.pak",
+      "size": 260769,
+      "sha256": "4481f3bb50327ecc572761e0b5692d0c03daf4a456d28182550fa88088694fae",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/locales/zh-TW.pak",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__locales__zh-TW.pak",
+      "size": 259707,
+      "sha256": "98b53bc6e58d9979f89cc4daa0c1935eb2dd71d32643510a14144d7b769079b6",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/natives_blob.bin",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__natives_blob.bin",
+      "size": 83237,
+      "sha256": "354ff502a0e1ed73df4e5c7b52970356b04777461f6e169f72a8567ab5f4c317",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/renderer.exe",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__renderer.exe",
+      "size": 237056,
+      "sha256": "98ad1905a922126f620af31808eae55ae4557afe81e758afe34fb3d14fd3b671",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/snapshot_blob.bin",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__snapshot_blob.bin",
+      "size": 47939,
+      "sha256": "e5ea345a6fb60f34a48b7d2566168e480fdc5e271041281240750b1e558d7a7a",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/sound.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__sound.dll",
+      "size": 193820,
+      "sha256": "f74e2b733d5ac7fbdd92f1f39ae602d744cc6daba8e72d423f6cb9ba47491168",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/swiftshader/libEGL.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__swiftshader__libEGL.dll",
+      "size": 339456,
+      "sha256": "23c7006ce0614fe925df06c8746cd63e6affa2fa02a743b7d227bff78bfe8c90",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/swiftshader/libGLESv2.dll",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__swiftshader__libGLESv2.dll",
+      "size": 2446336,
+      "sha256": "fed2adde92914a37af97224b9b90f5b64e317238559b3a50266643a14dcf2f61",
+      "platform": "windows"
+    },
+    {
+      "path": "cef/v8_context_snapshot.bin",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__v8_context_snapshot.bin",
+      "size": 164721,
+      "sha256": "09e06280409aa625eb9d63cd3dba7db572fa5b0506c022860492ec398ed4e986",
+      "platform": "windows"
+    },
+    {
+      "path": "cef.asi",
+      "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef.asi",
+      "size": 211968,
+      "sha256": "87deafc51b24d6fecd52795821257ddb6065da9ef6e272c08b721cf07f007974",
+      "platform": "windows"
+    }
+  ]
+}
