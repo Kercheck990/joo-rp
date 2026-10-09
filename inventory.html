@@ -1,9 +1,6 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joo RP — инвентарь</title><link rel="stylesheet" href="inventory.css"></head><body>
-<main class="panel"><header><div class="brand"><span class="logo">J</span> JOO <b>RP</b></div><button id="close" aria-label="Закрыть">×</button></header>
-<div class="heading"><div><small>ПЕРСОНАЖ / ВЕЩИ</small><h1>Инвентарь</h1><p>Твои вещи всегда под рукой.</p></div><span class="bag">▦</span></div>
-<section class="items">
-  <article><span class="item-icon">◈</span><div><h2>Вода</h2><p>Восстанавливает 20 здоровья</p></div><strong id="water-count">0</strong><button data-use="water">Использовать</button></article>
-  <article><span class="item-icon">◆</span><div><h2>Перекус</h2><p>Восстанавливает 15 здоровья</p></div><strong id="snack-count">0</strong><button data-use="snack">Использовать</button></article>
-  <article><span class="item-icon">▣</span><div><h2>Телефон</h2><p>Контакты появятся позже</p></div><strong id="phone-count">0</strong><button data-use="phone">Открыть</button></article>
-</section><footer>Новые вещи будут появляться в инвентаре по мере развития сервера. <span>ESC — закрыть</span></footer></main>
-<script src="inventory.js"></script></body></html>
+<main class="inventory" data-drag-window>
+  <header data-drag-handle><button data-nav="help">ПОМОЩЬ</button><button data-nav="report">РЕПОРТ</button><button data-nav="gps">GPS</button><strong>ИНВЕНТАРЬ</strong><span>JOO RP</span></header>
+  <div class="layout"><aside><div class="person"><div class="figure"><img id="skin-image" alt="Скин персонажа"></div><div><b id="player-name">ПЕРСОНАЖ</b><small>ТВОИ ВЕЩИ</small></div></div><div class="nav"><button data-nav="menu">МЕНЮ</button><button data-nav="settings">НАСТРОЙКИ</button><button data-nav="cars">АВТО</button><button data-nav="business">БИЗНЕС</button><button data-nav="donate">ДОНАТ</button><button data-nav="family">СЕМЬЯ</button><button data-nav="quest">ЗАДАНИЯ</button><button data-nav="rewards">НАГРАДЫ</button></div></aside>
+  <section class="storage"><div class="grid" id="grid"></div><div class="bottom"><button data-nav="security">БЕЗОПАСНОСТЬ</button><span id="details">Выбери предмет</span><button id="close">ЗАКРЫТЬ</button></div></section></div>
+</main><script src="drag.js"></script><script src="inventory.js"></script></body></html>

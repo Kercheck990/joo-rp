@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joo RP — меню</title><link rel="stylesheet" href="menu.css"></head>
-<body><main class="menu">
-  <header><div class="brand"><span class="brand-icon">J</span><span>JOO <b>RP</b></span></div><button class="close" id="close" aria-label="Закрыть">×</button></header>
+<body><main class="menu" data-drag-window>
+  <header data-drag-handle><div class="brand"><span class="brand-icon">J</span><span>JOO <b>RP</b></span></div><button class="close" id="close" aria-label="Закрыть">×</button></header>
   <div class="hero"><div><small>ГЛАВНОЕ МЕНЮ</small><h1>Играй в Joo RP</h1><p id="stats">Загружаем персонажа...</p></div><div class="hero-mark">JR</div></div>
   <section class="tiles">
-    <button data-action="courier"><span class="icon">↗</span><span><b>Курьер</b><small>$250 за доставку</small></span><i>→</i></button>
-    <button data-action="cleaner"><span class="icon">✦</span><span><b>Уборщик</b><small>$180 за точку</small></span><i>→</i></button>
+    <button data-action="help"><span class="icon">?</span><span><b>Помощник по серверу</b><small>Как начать играть</small></span><i>→</i></button>
+    <button data-action="report"><span class="icon">✎</span><span><b>Написать админам</b><small>Вопрос или жалоба</small></span><i>→</i></button>
     <button data-action="inventory"><span class="icon">▦</span><span><b>Инвентарь</b><small>Вещи персонажа</small></span><i>→</i></button>
-    <button data-action="buy-moped"><span class="icon">◉</span><span><b>Купить Faggio</b><small>$2500 у маркера</small></span><i>→</i></button>
-    <button data-action="spawn-moped"><span class="icon">⌁</span><span><b>Забрать мопед</b><small>У маркера транспорта</small></span><i>→</i></button>
+    <button data-action="cef"><span class="icon">▣</span><span><b>CEF</b><small>Об интерфейсе</small></span><i>→</i></button>
+    <button data-action="exit-game"><span class="icon">↪</span><span><b>Выйти из игры</b><small>Отключиться от сервера</small></span><i>→</i></button>
   </section>
   <footer><span>/help — команды · /inv — инвентарь</span><span>ESC — закрыть</span></footer>
-</main><script src="menu.js"></script></body></html>
+</main><script src="drag.js"></script><script src="menu.js"></script></body></html>
