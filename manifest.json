@@ -518,6 +518,13 @@
       "size": 73728,
       "sha256": "14a8c57c86b826dcf6ef021ce411260d455588bcd0764b522396f52cd22a117b",
       "platform": "windows"
+    },
+    {
+      "path": "moonloader/JooRP-hotkeys.lua",
+      "url": "client/JooRP-hotkeys.lua",
+      "size": 413,
+      "sha256": "90a3cd1672f00a275b2a2d848a2e1cb5fc2db5ed203fe3e993ebc2ab155863e4",
+      "platform": "windows"
     }
   ]
 }

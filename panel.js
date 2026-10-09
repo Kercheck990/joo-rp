@@ -60,7 +60,7 @@ function errorBox() {
 function render(payload) {
   const state = String(payload).split('|');
   const [mode, name, id, skin, level, xp, cash, bank, admin, moped, chat, hints, weather, time,
-    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0'] = state;
+    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0', job = '0', taxiPhase = '0'] = state;
   const access = Number(admin);
 
   switch (Number(mode)) {
@@ -212,6 +212,19 @@ function render(payload) {
       heading(`Покупка дома №${houseId}`, `Стоимость: $${housePrice}. После покупки вход будет доступен по ALT.`);
       row(button('Купить дом', 'house-buy', `$${housePrice}`), button('Отмена', 'house-cancel'));
       break;
+    case 9: {
+      heading('Телефон', 'Joo RP · работа и связь');
+      const text = document.createElement('div'); text.className = 'stat';
+      text.textContent = job === '3' ? (taxiPhase === '1' ? 'Заказчик отмечен на карте. Останови такси рядом с ним.' : 'Маршрут пассажира отмечен на карте.') : 'Активного заказа такси нет. Начать смену: /work taxi у мэрии.';
+      content.appendChild(text);
+      if (job === '3' && taxiPhase === '1') {
+        const error = errorBox();
+        if (bridge && bridge.on) bridge.on('panel:error', value => { error.textContent = String(value); });
+        row(button('Я на месте', 'taxi-arrived', 'Заказчик ждёт у метки'));
+      }
+      row(button('Закрыть телефон', 'close'));
+      break;
+    }
   }
 }
 
