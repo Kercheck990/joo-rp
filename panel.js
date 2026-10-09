@@ -17,7 +17,7 @@ function button(label, action, small = '') {
     hint.textContent = small;
     element.appendChild(hint);
   }
-  element.addEventListener('click', () => send(action));
+  if (action) element.addEventListener('click', () => send(action));
   return element;
 }
 
