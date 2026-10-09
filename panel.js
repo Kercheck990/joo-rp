@@ -60,7 +60,7 @@ function errorBox() {
 function render(payload) {
   const state = String(payload).split('|');
   const [mode, name, id, skin, level, xp, cash, bank, admin, moped, chat, hints, weather, time,
-    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0'] = state;
+    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0'] = state;
   const access = Number(admin);
 
   switch (Number(mode)) {
@@ -68,10 +68,21 @@ function render(payload) {
       heading('Анимации', 'Выбери действие. Остановить можно здесь или командой /anim.');
       row(button('Помахать', 'wave'), button('Сесть', 'sit'), button('Танцевать', 'dance'), button('Остановить', 'stop'));
       break;
-    case 2:
-      heading('Транспорт', 'Личный мопед является отдельным транспортом.');
-      row(button('Купить Faggio', 'buy', '$2500 у маркера'), button('Забрать мопед', 'spawn', moped === '1' ? 'Принадлежит тебе' : 'Пока не куплен'));
+    case 2: {
+      heading('Автосалон Joo RP', 'Машины покупаются и выдаются у автосалона в Лос-Сантосе. Купленная модель сохраняется в базе.');
+      const catalog = document.createElement('div'); catalog.className = 'car-catalog';
+      for (const [model,title,price] of [[410,'Manana',12000],[466,'Glendale',22000],[402,'Buffalo',75000]]) {
+        const card = document.createElement('div'); card.className = 'car-card';
+        const photo = document.createElement('img'); photo.src = `https://assets.open.mp/assets/images/vehiclePictures/Vehicle_${model}.jpg`; photo.alt = title; photo.loading = 'lazy';
+        const label = document.createElement('strong'); label.textContent = `${title} · $${price.toLocaleString('ru-RU')}`;
+        const buy = button('Купить', `car-buy|${model}`); buy.disabled = carModel !== '0';
+        card.append(photo,label,buy); catalog.appendChild(card);
+      }
+      content.appendChild(catalog);
+      row(button('Забрать мою машину', 'car-spawn', carModel === '0' ? 'Пока не куплена' : `Модель ${carModel}`));
+      row(button('Купить Faggio', 'buy', '$2500'), button('Забрать мопед', 'spawn', moped === '1' ? 'Твой' : 'Пока не куплен'));
       break;
+    }
     case 3: {
       const hasPassword = adminPasswordSet === '1';
       heading(hasPassword ? 'Вход в админку' : 'Создание админского пароля',

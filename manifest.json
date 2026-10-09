@@ -2,90 +2,6 @@
   "version": 1,
   "files": [
     {
-      "path": "cef/assets/joorp/app.js",
-      "url": "app.js",
-      "size": 2812,
-      "sha256": "39b501a4bc74c11aeb2aa4ae1e2e68bd64bec1294445575b0abb938a6429b617",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/dialog.css",
-      "url": "dialog.css",
-      "size": 1154,
-      "sha256": "4dab67aa8af0ff46137245bc20127002d883485f8c2672418e5630e8f005460c",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/dialog.html",
-      "url": "dialog.html",
-      "size": 603,
-      "sha256": "3103e1ea5f40fdd360accf36f6e4dfbf488fa76d1af2ee47d16fc53794efae1c",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/dialog.js",
-      "url": "dialog.js",
-      "size": 975,
-      "sha256": "1bfd51156b3160ef60224af3ef6554c51105a48f07f63502d2eaf80756130ae1",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/index.html",
-      "url": "index.html",
-      "size": 2905,
-      "sha256": "4b953f14834a30153b38ce5c19d5262652151041c19237bd391c5980c65e0565",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/inventory.css",
-      "url": "inventory.css",
-      "size": 2254,
-      "sha256": "35abf8457cc0f50913be8354035728f3f912f11f984cbd15da69bed5502aa09d",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/inventory.html",
-      "url": "inventory.html",
-      "size": 1546,
-      "sha256": "118daadd7c931b9a089b11b436f7bae65c206417d405bbadf6df832b5bbd9157",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/inventory.js",
-      "url": "inventory.js",
-      "size": 1122,
-      "sha256": "7aa29a2f27eb058b8e87b2942508ce08d8c756631b85f61701467c55081938b6",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/menu.css",
-      "url": "menu.css",
-      "size": 2504,
-      "sha256": "e503cebb7113a47145b799a4a6962035e8eb9b42f96548193de3c216e550fdd1",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/menu.html",
-      "url": "menu.html",
-      "size": 1639,
-      "sha256": "d80b501c9b109b9be36a52155b1ff88e8eb44cd5582bd9ce95933f3adabdb67a",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/menu.js",
-      "url": "menu.js",
-      "size": 850,
-      "sha256": "74060d7355c8214340a62428081af00fc74c0cb906cb507cbfc523435ce4c736",
-      "platform": "all"
-    },
-    {
-      "path": "cef/assets/joorp/style.css",
-      "url": "style.css",
-      "size": 4596,
-      "sha256": "f5a2892e81f0402cd366f6c990926a12697aec0aabf2b4f473d4514764a82c03",
-      "platform": "all"
-    },
-    {
       "path": "cef/cef.pak",
       "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef__cef.pak",
       "size": 2035201,
@@ -594,6 +510,13 @@
       "url": "https://github.com/Kercheck990/joo-rp/releases/download/v0.1.0/win__cef.asi",
       "size": 211968,
       "sha256": "87deafc51b24d6fecd52795821257ddb6065da9ef6e272c08b721cf07f007974",
+      "platform": "windows"
+    },
+    {
+      "path": "joo_hud.asi",
+      "url": "client/joo_hud.asi",
+      "size": 73728,
+      "sha256": "14a8c57c86b826dcf6ef021ce411260d455588bcd0764b522396f52cd22a117b",
       "platform": "windows"
     }
   ]
