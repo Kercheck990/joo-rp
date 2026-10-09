@@ -60,7 +60,7 @@ function errorBox() {
 function render(payload) {
   const state = String(payload).split('|');
   const [mode, name, id, skin, level, xp, cash, bank, admin, moped, chat, hints, weather, time,
-    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0', job = '0', taxiPhase = '0'] = state;
+    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0', job = '0', taxiPhase = '0', faction = '0'] = state;
   const access = Number(admin);
 
   switch (Number(mode)) {
@@ -181,7 +181,7 @@ function render(payload) {
       image.onerror = () => image.replaceWith(document.createTextNode(`Скин ${skin}`));
       avatar.appendChild(image);
       content.appendChild(avatar);
-      for (const text of [`Скин: ${skin}`, `Уровень: ${level} · XP: ${xp}/${Number(level) * 5}`, `Наличные: $${cash} · Банк: $${bank}`, `Админ: ${admin} · Мопед: ${moped === '1' ? 'есть' : 'нет'}`]) {
+      for (const text of [`Скин: ${skin}`, `Уровень: ${level} · XP: ${xp}/${Number(level) * 5}`, `Наличные: $${cash} · Банк: $${bank}`, `Фракция: ${['Нет','Полиция','Скорая помощь','FBI'][Number(faction)] || 'Нет'}`, `Админ: ${admin} · Мопед: ${moped === '1' ? 'есть' : 'нет'}`]) {
         const element = document.createElement('div');
         element.className = 'stat';
         element.textContent = text;
