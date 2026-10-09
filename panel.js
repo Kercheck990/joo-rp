@@ -75,21 +75,45 @@ function render(payload) {
     case 3: {
       const hasPassword = adminPasswordSet === '1';
       heading(hasPassword ? 'Вход в админку' : 'Создание админского пароля',
-        hasPassword ? 'Введи свой отдельный админский пароль.' : 'Этот пароль будет использоваться только для входа в админ-панель.');
+        hasPassword
+          ? 'Войди один раз. Авторизация сохранится до выхода с сервера.'
+          : 'Создай пароль один раз. Затем снова введи /admin и войди с ним.');
       const password = field('Пароль: 6–32 латинских букв или цифр', 'password');
+      password.maxLength = 32;
       const confirmation = hasPassword ? null : field('Повтори пароль', 'password');
+      if (confirmation) confirmation.maxLength = 32;
       const error = errorBox();
       const submit = button(hasPassword ? 'Войти' : 'Создать пароль', '');
       submit.classList.add('primary-tile');
-      submit.onclick = () => {
-        if (!password.value) return;
-        if (hasPassword) send(`auth|${password.value}`);
-        else send(`setup|${password.value}|${confirmation.value}`);
-        password.value = '';
-        if (confirmation) confirmation.value = '';
+      const setPending = pending => {
+        submit.disabled = pending;
+        submit.textContent = pending ? (hasPassword ? 'Проверяем…' : 'Сохраняем…') : (hasPassword ? 'Войти' : 'Создать пароль');
       };
+      submit.onclick = () => {
+        error.textContent = '';
+        const value = password.value;
+        if (!/^[A-Za-z0-9]{6,32}$/.test(value)) {
+          error.textContent = 'Пароль должен содержать 6–32 латинских буквы или цифры.';
+          return;
+        }
+        if (!hasPassword && value !== confirmation.value) {
+          error.textContent = 'Пароли не совпадают.';
+          return;
+        }
+        setPending(true);
+        if (hasPassword) send(`auth|${value}`);
+        else send(`setup|${value}|${confirmation.value}`);
+      };
+      const submitOnEnter = event => { if (event.key === 'Enter' && !submit.disabled) submit.click(); };
+      password.addEventListener('keydown', submitOnEnter);
+      if (confirmation) confirmation.addEventListener('keydown', submitOnEnter);
       content.appendChild(submit);
-      if (bridge && bridge.on) bridge.on('panel:error', text => { error.textContent = String(text); });
+      if (bridge && bridge.on) bridge.on('panel:error', text => {
+        error.textContent = String(text);
+        setPending(false);
+        password.focus();
+      });
+      setTimeout(() => password.focus(), 0);
       break;
     }
     case 4: {
@@ -133,7 +157,7 @@ function render(payload) {
         };
         content.appendChild(setAdmin);
       }
-      row(button('Выйти из админки', 'logout'));
+      row(button('Закрыть панель', 'close', 'Авторизация сохранится до выхода из игры'));
       break;
     }
     case 5: {
