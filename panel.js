@@ -1,67 +1,187 @@
 const bridge = window.cef;
 const content = document.getElementById('content');
 const caption = document.getElementById('caption');
-let state = [];
+
 function send(action) {
   if (!bridge || typeof bridge.emit !== 'function') return;
   if (action === 'close' && typeof bridge.set_focus === 'function') bridge.set_focus(false);
   bridge.emit('panel:action', action);
 }
+
 function button(label, action, small = '') {
-  const b = document.createElement('button'); b.className = 'tile'; b.textContent = label;
-  if (small) { const s = document.createElement('small'); s.textContent = small; b.appendChild(s); }
-  b.addEventListener('click', () => send(action)); return b;
+  const element = document.createElement('button');
+  element.className = 'tile';
+  element.textContent = label;
+  if (small) {
+    const hint = document.createElement('small');
+    hint.textContent = small;
+    element.appendChild(hint);
+  }
+  element.addEventListener('click', () => send(action));
+  return element;
 }
-function heading(title, desc) {
-  content.replaceChildren(); const h = document.createElement('h1'); h.textContent = title; content.appendChild(h);
-  if (desc) { const p = document.createElement('p'); p.textContent = desc; content.appendChild(p); }
+
+function heading(title, description) {
+  content.replaceChildren();
+  const titleElement = document.createElement('h1');
+  titleElement.textContent = title;
+  content.appendChild(titleElement);
+  if (description) {
+    const text = document.createElement('p');
+    text.textContent = description;
+    content.appendChild(text);
+  }
   caption.textContent = title;
 }
-function row(...elements) { const div = document.createElement('div'); div.className = 'row'; div.append(...elements); content.appendChild(div); }
-function field(placeholder, type = 'text') { const el = document.createElement('input'); el.className = 'field'; el.placeholder = placeholder; el.type = type; content.appendChild(el); return el; }
+
+function row(...elements) {
+  const element = document.createElement('div');
+  element.className = 'row';
+  element.append(...elements);
+  content.appendChild(element);
+}
+
+function field(placeholder, type = 'text') {
+  const element = document.createElement('input');
+  element.className = 'field';
+  element.placeholder = placeholder;
+  element.type = type;
+  content.appendChild(element);
+  return element;
+}
+
+function errorBox() {
+  const element = document.createElement('p');
+  element.className = 'error';
+  content.appendChild(element);
+  return element;
+}
+
 function render(payload) {
-  state = String(payload).split('|'); const [mode,name,id,skin,level,xp,cash,bank,admin,moped,chat,hints,weather,time] = state;
+  const state = String(payload).split('|');
+  const [mode, name, id, skin, level, xp, cash, bank, admin, moped, chat, hints, weather, time,
+    adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0'] = state;
+  const access = Number(admin);
+
   switch (Number(mode)) {
     case 1:
       heading('Анимации', 'Выбери действие. Остановить можно здесь или командой /anim.');
-      row(button('Помахать', 'wave'), button('Сесть', 'sit'), button('Танцевать', 'dance'), button('Остановить', 'stop')); break;
+      row(button('Помахать', 'wave'), button('Сесть', 'sit'), button('Танцевать', 'dance'), button('Остановить', 'stop'));
+      break;
     case 2:
-      heading('Транспорт', 'Личный мопед — отдельный транспорт, игровые модели не заменяются.');
-      row(button('Купить Faggio', 'buy', '$2500 у маркера'), button('Забрать мопед', 'spawn', moped === '1' ? 'Принадлежит тебе' : 'Пока не куплен')); break;
+      heading('Транспорт', 'Личный мопед является отдельным транспортом.');
+      row(button('Купить Faggio', 'buy', '$2500 у маркера'), button('Забрать мопед', 'spawn', moped === '1' ? 'Принадлежит тебе' : 'Пока не куплен'));
+      break;
     case 3: {
-      heading('Вход в админку', 'Подтверди пароль аккаунта.'); const input = field('Пароль', 'password');
-      const error = document.createElement('p'); error.className = 'error'; content.appendChild(error);
-      const b = button('Войти', ''); b.onclick = () => { if (input.value) send(`auth|${input.value}`); input.value = ''; }; content.appendChild(b);
-      if (bridge && bridge.on) bridge.on('panel:error', text => { error.textContent = String(text); }); break;
+      const hasPassword = adminPasswordSet === '1';
+      heading(hasPassword ? 'Вход в админку' : 'Создание админского пароля',
+        hasPassword ? 'Введи свой отдельный админский пароль.' : 'Этот пароль будет использоваться только для входа в админ-панель.');
+      const password = field('Пароль: 6–32 латинских букв или цифр', 'password');
+      const confirmation = hasPassword ? null : field('Повтори пароль', 'password');
+      const error = errorBox();
+      const submit = button(hasPassword ? 'Войти' : 'Создать пароль', '');
+      submit.classList.add('primary-tile');
+      submit.onclick = () => {
+        if (!password.value) return;
+        if (hasPassword) send(`auth|${password.value}`);
+        else send(`setup|${password.value}|${confirmation.value}`);
+        password.value = '';
+        if (confirmation) confirmation.value = '';
+      };
+      content.appendChild(submit);
+      if (bridge && bridge.on) bridge.on('panel:error', text => { error.textContent = String(text); });
+      break;
     }
     case 4: {
-      heading('Админ-панель', `Уровень доступа: ${admin}. Действия записываются сервером.`);
-      const input = field('ID игрока или модель авто', 'number');
-      row(...[['К игроку','goto'],['Игрок ко мне','gethere'],['Заморозить','freeze'],['Разморозить','unfreeze'],['Кикнуть','kick'],['Создать авто','vehicle']].map(([label,cmd]) => {
-        const b = button(label, ''); b.onclick = () => { if (/^\d+$/.test(input.value)) send(`${cmd}|${input.value}`); }; return b;
-      })); row(button('Выйти из админки','logout')); break;
+      const seconds = Math.max(0, Number(adminSeconds) || 0);
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      heading('Админ-панель', `Уровень доступа: ${access}. Доступные функции зависят от уровня.`);
+      const statistics = document.createElement('div');
+      statistics.className = 'admin-stats';
+      statistics.innerHTML = `<div><b>${punishments}</b><span>наказаний выдано</span></div><div><b>${hours} ч ${minutes} мин</b><span>наиграно в админке</span></div>`;
+      content.appendChild(statistics);
+
+      const target = field('ID игрока', 'number');
+      const actions = [];
+      if (access >= 1) actions.push(['К игроку', 'goto'], ['Игрок ко мне', 'gethere'], ['Заморозить', 'freeze'], ['Разморозить', 'unfreeze']);
+      if (access >= 2) actions.push(['Кикнуть', 'kick']);
+      row(...actions.map(([label, command]) => {
+        const element = button(label, '');
+        element.onclick = () => { if (/^\d+$/.test(target.value)) send(`${command}|${target.value}`); };
+        return element;
+      }));
+
+      if (access >= 3) {
+        const model = field('Модель транспорта: 400–611', 'number');
+        const createVehicle = button('Создать транспорт', '', 'Доступно с 3 уровня');
+        createVehicle.onclick = () => { if (/^\d+$/.test(model.value)) send(`vehicle|${model.value}`); };
+        content.appendChild(createVehicle);
+      }
+      if (access >= 4) {
+        const houseHelp = document.createElement('div');
+        houseHelp.className = 'stat';
+        houseHelp.textContent = 'Дома: /addhouse стоимость — создать на своей позиции; /deletehouse — удалить ближайший.';
+        content.appendChild(houseHelp);
+      }
+      if (access >= 5) {
+        const adminTarget = field('ID нового администратора', 'number');
+        const adminLevel = field('Уровень: 0–5', 'number');
+        const setAdmin = button('Изменить уровень', '', 'Только 5 уровень');
+        setAdmin.onclick = () => {
+          if (/^\d+$/.test(adminTarget.value) && /^[0-5]$/.test(adminLevel.value)) send(`setadmin|${adminTarget.value}|${adminLevel.value}`);
+        };
+        content.appendChild(setAdmin);
+      }
+      row(button('Выйти из админки', 'logout'));
+      break;
     }
     case 5: {
       heading('Персонаж', `${name} (#${id})`);
-      const avatar = document.createElement('div'); avatar.className = 'skin';
-      const image = document.createElement('img'); image.src = `https://assets.open.mp/assets/images/skins/${Number(skin)}.png`; image.alt = `Скин ${skin}`; image.onerror = () => { image.replaceWith(document.createTextNode(`Скин ${skin}`)); }; avatar.appendChild(image); content.appendChild(avatar);
-      for (const text of [`Скин: ${skin}`,`Уровень: ${level} · XP: ${xp}/${Number(level)*5}`,`Наличные: $${cash} · Банк: $${bank}`,`Админ: ${admin} · Мопед: ${moped==='1'?'есть':'нет'}`]) {
-        const div = document.createElement('div'); div.className = 'stat'; div.textContent = text; content.appendChild(div);
-      } break;
+      const avatar = document.createElement('div');
+      avatar.className = 'skin';
+      const image = document.createElement('img');
+      image.src = `https://assets.open.mp/assets/images/skins/${Number(skin)}.png`;
+      image.alt = `Скин ${skin}`;
+      image.onerror = () => image.replaceWith(document.createTextNode(`Скин ${skin}`));
+      avatar.appendChild(image);
+      content.appendChild(avatar);
+      for (const text of [`Скин: ${skin}`, `Уровень: ${level} · XP: ${xp}/${Number(level) * 5}`, `Наличные: $${cash} · Банк: $${bank}`, `Админ: ${admin} · Мопед: ${moped === '1' ? 'есть' : 'нет'}`]) {
+        const element = document.createElement('div');
+        element.className = 'stat';
+        element.textContent = text;
+        content.appendChild(element);
+      }
+      break;
     }
     case 6:
       heading('Настройки', 'Параметры игры, которыми можно управлять на сервере.');
-      row(button(`Локальный чат: ${chat==='1'?'вкл':'выкл'}`,'chat'), button(`Подсказки: ${hints==='1'?'вкл':'выкл'}`,'hints'));
-      row(button(`Погода: ${['обычная','ясно','туман'][Number(weather)] || 'обычная'}`,'weather'), button(`Время: ${['обычное','день','ночь'][Number(time)] || 'обычное'}`,'time'));
+      row(button(`Локальный чат: ${chat === '1' ? 'вкл' : 'выкл'}`, 'chat'), button(`Подсказки: ${hints === '1' ? 'вкл' : 'выкл'}`, 'hints'));
+      row(button(`Погода: ${['обычная', 'ясно', 'туман'][Number(weather)] || 'обычная'}`, 'weather'), button(`Время: ${['обычное', 'день', 'ночь'][Number(time)] || 'обычное'}`, 'time'));
       break;
     case 7: {
-      heading('Написать админам', 'Опиши проблему одним сообщением.'); const input = field('Что случилось?'); input.maxLength = 95;
-      const error = document.createElement('p'); error.className = 'error'; content.appendChild(error);
+      heading('Написать админам', 'Опиши проблему одним сообщением.');
+      const input = field('Что случилось?');
+      input.maxLength = 95;
+      const error = errorBox();
       if (bridge && bridge.on) bridge.on('panel:error', text => { error.textContent = String(text); });
-      const b = button('Отправить', ''); b.onclick = () => { const value = input.value.trim().replace(/[|\r\n]/g,' '); if (value) send(`report|${value}`); }; content.appendChild(b); break;
+      const submit = button('Отправить', '');
+      submit.onclick = () => {
+        const value = input.value.trim().replace(/[|\r\n]/g, ' ');
+        if (value) send(`report|${value}`);
+      };
+      content.appendChild(submit);
+      break;
     }
+    case 8:
+      heading(`Покупка дома №${houseId}`, `Стоимость: $${housePrice}. После покупки вход будет доступен по ALT.`);
+      row(button('Купить дом', 'house-buy', `$${housePrice}`), button('Отмена', 'house-cancel'));
+      break;
   }
 }
-if (bridge && bridge.on) bridge.on('panel:state', render); else render('5|Игрок|3|78|1|0|500|0|0|0|1|1');
+
+if (bridge && bridge.on) bridge.on('panel:state', render);
+else render('4|developer|1|78|1|0|500|0|5|0|1|1|0|0|1|3|7260|0|0');
+
 document.getElementById('close').addEventListener('click', () => send('close'));
 window.addEventListener('keydown', event => { if (event.key === 'Escape') send('close'); });
