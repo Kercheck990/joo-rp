@@ -3,7 +3,8 @@ const content = document.getElementById('content');
 const caption = document.getElementById('caption');
 const carCatalog = [
   [410, 'Manana', 12000], [466, 'Glendale', 22000], [496, 'Blista Compact', 16000],
-  [400, 'Landstalker', 38000], [562, 'Elegy', 68000], [402, 'Buffalo', 75000]
+  [400, 'Landstalker', 38000], [562, 'Elegy', 68000], [402, 'Buffalo', 75000],
+  [612, 'Минск', 18000]
 ];
 let carView = 'garage';
 
@@ -153,7 +154,7 @@ function render(payload) {
       }));
 
       if (access >= 3) {
-        const model = field('Модель транспорта: 400–611', 'number');
+        const model = field('Модель транспорта: 400–612', 'number');
         const createVehicle = button('Создать транспорт', '', 'Доступно с 3 уровня');
         createVehicle.onclick = () => { if (/^\d+$/.test(model.value)) send(`vehicle|${model.value}`); };
         content.appendChild(createVehicle);
@@ -270,7 +271,7 @@ function carName(model) {
 
 function carPhoto(model, title) {
   const photo = document.createElement('img');
-  photo.src = `https://assets.open.mp/assets/images/vehiclePictures/Vehicle_${model}.jpg`;
+  photo.src = Number(model) === 612 ? 'minsk.jpg' : `https://assets.open.mp/assets/images/vehiclePictures/Vehicle_${model}.jpg`;
   photo.alt = title;
   photo.loading = 'lazy';
   photo.onerror = () => { photo.style.display = 'none'; };
