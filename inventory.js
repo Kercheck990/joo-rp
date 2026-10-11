@@ -12,7 +12,16 @@ function show(payload) {
   const [waterText,snackText,phoneText,name,skin,ownedSkin,baseSkin] = String(payload).split('|');
   const [water,snack,phone] = [waterText,snackText,phoneText].map(Number);
   if (name) document.getElementById('player-name').textContent = name;
-  if (skin && /^\d+$/.test(skin)) { const image = document.getElementById('skin-image'); image.src = `https://assets.open.mp/assets/images/skins/${skin}.png`; image.alt = `Скин ${skin}`; }
+  if (skin && /^\d+$/.test(skin)) {
+    const image = document.getElementById('skin-image');
+    const fallback = document.getElementById('skin-fallback');
+    fallback.textContent = `Скин ${skin}`;
+    fallback.hidden = false;
+    image.hidden = false;
+    image.onload = () => { fallback.hidden = true; };
+    image.onerror = () => { image.hidden = true; fallback.hidden = false; };
+    image.src = `https://assets.open.mp/assets/images/skins/${skin}.png`;
+  }
   const items=[['Вода','◈',water,'water'],['Перекус','◆',snack,'snack'],['Телефон','▣',phone,'phone']];
   slots.forEach(slot => { slot.replaceChildren(); slot.className='slot'; slot.onclick=null; });
   items.forEach(([label,icon,count,action],index) => { if (!count) return; const slot=slots[index]; slot.classList.add('owned'); slot.textContent=icon;

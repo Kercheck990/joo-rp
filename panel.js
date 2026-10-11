@@ -225,10 +225,71 @@ function render(payload) {
       row(button('Закрыть телефон', 'close'));
       break;
     }
+    case 10: {
+      heading('Мои дома', 'Выбери дом, чтобы открыть управление. Покупать можно несколько домов.');
+      const list = document.createElement('div');
+      list.id = 'house-list';
+      list.className = 'house-list';
+      list.textContent = 'Загружаем дома…';
+      content.appendChild(list);
+      const pages = document.createElement('div');
+      pages.id = 'house-pages';
+      pages.className = 'row';
+      content.appendChild(pages);
+      break;
+    }
+    case 11: {
+      heading('Управление домом', 'Твой дом. Отметь его на карте, войди рядом с ним или продай государству.');
+      const info = document.createElement('div');
+      info.id = 'house-detail';
+      info.className = 'stat';
+      info.textContent = 'Загружаем сведения…';
+      content.appendChild(info);
+      row(button('Отметить на карте', 'house-pin'), button('Войти', 'house-enter'), button('К списку', 'house-back'));
+      const sell = button('Продать государству', '', 'Возврат 70% стоимости');
+      sell.classList.add('danger-tile');
+      sell.onclick = () => {
+        if (window.confirm('Продать этот дом государству за 70% стоимости?')) send('house-sell');
+      };
+      content.appendChild(sell);
+      break;
+    }
   }
 }
 
-if (bridge && bridge.on) bridge.on('panel:state', render);
+function renderHouseList(payload) {
+  const [pageText, totalText, rows = ''] = String(payload).split('|');
+  const list = document.getElementById('house-list');
+  const pages = document.getElementById('house-pages');
+  if (!list || !pages) return;
+  list.replaceChildren(); pages.replaceChildren();
+  const page = Math.max(0, Number(pageText) || 0);
+  const total = Math.max(0, Number(totalText) || 0);
+  if (!total) { list.textContent = 'У тебя пока нет домов. Свободный дом можно купить у зелёной метки клавишей N.'; return; }
+  for (const entry of rows.split(';').filter(Boolean)) {
+    const [id, price, x, y] = entry.split(',');
+    const card = button(`Дом №${id}`, `house-select|${id}`, `Цена $${Number(price).toLocaleString('ru-RU')} · ${x}, ${y}`);
+    list.appendChild(card);
+  }
+  if (page > 0) pages.appendChild(button('← Назад', `house-page|${page - 1}`));
+  if ((page + 1) * 8 < total) pages.appendChild(button('Дальше →', `house-page|${page + 1}`));
+  const count = document.createElement('span');
+  count.className = 'house-count'; count.textContent = `Всего домов: ${total}`;
+  pages.appendChild(count);
+}
+
+function renderHouseDetail(payload) {
+  const detail = document.getElementById('house-detail');
+  if (!detail) return;
+  const [id, price, x, y, z] = String(payload).split('|');
+  detail.textContent = `Дом №${id} · стоимость $${Number(price).toLocaleString('ru-RU')} · координаты ${x}, ${y}, ${z}`;
+}
+
+if (bridge && bridge.on) {
+  bridge.on('panel:state', render);
+  bridge.on('house:list', renderHouseList);
+  bridge.on('house:detail', renderHouseDetail);
+}
 else render('4|developer|1|78|1|0|500|0|5|0|1|1|0|0|1|3|7260|0|0');
 
 document.getElementById('close').addEventListener('click', () => send('close'));
