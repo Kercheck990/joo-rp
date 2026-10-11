@@ -4,7 +4,6 @@ const caption = document.getElementById('caption');
 const carCatalog = [
   [410, 'Manana', 12000], [466, 'Glendale', 22000], [496, 'Blista Compact', 16000],
   [400, 'Landstalker', 38000], [562, 'Elegy', 68000], [402, 'Buffalo', 75000],
-  [612, 'Минск', 18000]
 ];
 let carView = 'garage';
 
