@@ -74,16 +74,18 @@ function render(payload) {
       row(button('Помахать', 'wave'), button('Сесть', 'sit'), button('Танцевать', 'dance'), button('Остановить', 'stop'));
       break;
     case 2: {
-      heading('Автомобили', 'Мои машины и покупки в автосалоне Joo RP.');
-      const tabs = document.createElement('div'); tabs.className = 'car-tabs';
-      for (const [label, view] of [['Мои авто', 'garage'], ['Купить авто', 'shop']]) {
-        const tab = button(label, ''); tab.classList.toggle('active', view === carView);
-        tab.onclick = () => { carView = view; renderCarView(); };
-        tabs.appendChild(tab);
-      }
-      content.appendChild(tabs);
+      carView = 'garage';
+      heading('Мои автомобили', 'Выбери свою машину для управления. Купить новую можно в автосалоне.');
       const body = document.createElement('div'); body.id = 'car-view'; content.appendChild(body);
       renderCarView();
+      break;
+    }
+    case 12: {
+      carView = 'shop';
+      heading('Автосалон Joo RP', 'Выбери автомобиль. Покупка доступна только здесь.');
+      const body = document.createElement('div'); body.id = 'car-view'; content.appendChild(body);
+      renderCarView();
+      row(button('Мои автомобили', 'dealer-garage'));
       break;
     }
     case 3: {
@@ -242,13 +244,13 @@ function render(payload) {
       break;
     }
     case 11: {
-      heading('Управление домом', 'Твой дом. Отметь его на карте, войди рядом с ним или продай государству.');
+      heading('Управление домом', 'Твой дом. Отметь его на карте или продай государству. Новый интерьер готовится.');
       const info = document.createElement('div');
       info.id = 'house-detail';
       info.className = 'stat';
       info.textContent = 'Загружаем сведения…';
       content.appendChild(info);
-      row(button('Отметить на карте', 'house-pin'), button('Войти', 'house-enter'), button('К списку', 'house-back'));
+      row(button('Отметить на карте', 'house-pin'), button('К списку', 'house-back'));
       const sell = button('Продать государству', '', 'Возврат 70% стоимости');
       sell.classList.add('danger-tile');
       sell.onclick = () => {
@@ -279,9 +281,8 @@ function renderCarView() {
   const body = document.getElementById('car-view');
   if (!body) return;
   body.replaceChildren();
-  document.querySelectorAll('.car-tabs button').forEach((tab, i) => tab.classList.toggle('active', (i === 0) === (carView === 'garage')));
   if (carView === 'shop') {
-    const note = document.createElement('p'); note.textContent = 'Покупка доступна у автосалона в Лос-Сантосе. Каждая машина навсегда сохраняется в твоём гараже.'; body.appendChild(note);
+    const note = document.createElement('p'); note.textContent = 'Купленная машина навсегда появится в разделе «Мои автомобили».'; body.appendChild(note);
     const catalog = document.createElement('div'); catalog.className = 'car-catalog';
     for (const [model, title, price] of carCatalog) {
       const card = document.createElement('div'); card.className = 'car-card';
@@ -289,9 +290,6 @@ function renderCarView() {
       card.append(carPhoto(model, title), label, button('Купить', `car-buy|${model}`)); catalog.appendChild(card);
     }
     body.appendChild(catalog);
-    const mopeds = document.createElement('div'); mopeds.className = 'row';
-    mopeds.append(button('Купить Faggio', 'buy', '$2500'), button('Забрать мопед', 'spawn'));
-    body.appendChild(mopeds);
     return;
   }
   const summary = document.createElement('p');
@@ -304,12 +302,13 @@ function renderCarView() {
     tile.classList.toggle('selected', car.id === carState.selectedId);
     list.appendChild(tile);
   }
-  if (!carState.total) list.textContent = 'Автомобилей пока нет. Открой «Купить авто» и выбери первую машину.';
+  if (!carState.total) list.textContent = 'Автомобилей пока нет. Купить машину можно в автосалоне Лос-Сантоса.';
   body.appendChild(list);
   const pages = document.createElement('div'); pages.className = 'row car-pages';
   if (carState.page > 0) pages.appendChild(button('← Назад', `car-page|${carState.page - 1}`));
   if ((carState.page + 1) * 8 < carState.total) pages.appendChild(button('Дальше →', `car-page|${carState.page + 1}`));
   body.appendChild(pages);
+  body.appendChild(button('Забрать свой мопед', 'spawn'));
   if (!carState.selectedId) return;
   const selected = carState.cars.find(car => car.id === carState.selectedId);
   const status = document.createElement('div'); status.className = 'stat';
