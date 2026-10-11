@@ -1,6 +1,11 @@
 const bridge = window.cef;
 const content = document.getElementById('content');
 const caption = document.getElementById('caption');
+const carCatalog = [
+  [410, 'Manana', 12000], [466, 'Glendale', 22000], [496, 'Blista Compact', 16000],
+  [400, 'Landstalker', 38000], [562, 'Elegy', 68000], [402, 'Buffalo', 75000]
+];
+let carView = 'garage';
 
 function send(action) {
   if (!bridge || typeof bridge.emit !== 'function') return;
@@ -69,18 +74,16 @@ function render(payload) {
       row(button('Помахать', 'wave'), button('Сесть', 'sit'), button('Танцевать', 'dance'), button('Остановить', 'stop'));
       break;
     case 2: {
-      heading('Автосалон Joo RP', 'Машины покупаются и выдаются у автосалона в Лос-Сантосе. Купленная модель сохраняется в базе.');
-      const catalog = document.createElement('div'); catalog.className = 'car-catalog';
-      for (const [model,title,price] of [[410,'Manana',12000],[466,'Glendale',22000],[402,'Buffalo',75000]]) {
-        const card = document.createElement('div'); card.className = 'car-card';
-        const photo = document.createElement('img'); photo.src = `https://assets.open.mp/assets/images/vehiclePictures/Vehicle_${model}.jpg`; photo.alt = title; photo.loading = 'lazy';
-        const label = document.createElement('strong'); label.textContent = `${title} · $${price.toLocaleString('ru-RU')}`;
-        const buy = button('Купить', `car-buy|${model}`); buy.disabled = carModel !== '0';
-        card.append(photo,label,buy); catalog.appendChild(card);
+      heading('Автомобили', 'Мои машины и покупки в автосалоне Joo RP.');
+      const tabs = document.createElement('div'); tabs.className = 'car-tabs';
+      for (const [label, view] of [['Мои авто', 'garage'], ['Купить авто', 'shop']]) {
+        const tab = button(label, ''); tab.classList.toggle('active', view === carView);
+        tab.onclick = () => { carView = view; renderCarView(); };
+        tabs.appendChild(tab);
       }
-      content.appendChild(catalog);
-      row(button('Забрать мою машину', 'car-spawn', carModel === '0' ? 'Пока не куплена' : `Модель ${carModel}`));
-      row(button('Купить Faggio', 'buy', '$2500'), button('Забрать мопед', 'spawn', moped === '1' ? 'Твой' : 'Пока не куплен'));
+      content.appendChild(tabs);
+      const body = document.createElement('div'); body.id = 'car-view'; content.appendChild(body);
+      renderCarView();
       break;
     }
     case 3: {
@@ -257,6 +260,82 @@ function render(payload) {
   }
 }
 
+let carState = { page: 0, total: 0, selectedId: 0, active: false, cars: [] };
+
+function carName(model) {
+  return carCatalog.find(item => item[0] === Number(model))?.[1] || `Модель ${model}`;
+}
+
+function carPhoto(model, title) {
+  const photo = document.createElement('img');
+  photo.src = `https://assets.open.mp/assets/images/vehiclePictures/Vehicle_${model}.jpg`;
+  photo.alt = title;
+  photo.loading = 'lazy';
+  photo.onerror = () => { photo.style.display = 'none'; };
+  return photo;
+}
+
+function renderCarView() {
+  const body = document.getElementById('car-view');
+  if (!body) return;
+  body.replaceChildren();
+  document.querySelectorAll('.car-tabs button').forEach((tab, i) => tab.classList.toggle('active', (i === 0) === (carView === 'garage')));
+  if (carView === 'shop') {
+    const note = document.createElement('p'); note.textContent = 'Покупка доступна у автосалона в Лос-Сантосе. Каждая машина навсегда сохраняется в твоём гараже.'; body.appendChild(note);
+    const catalog = document.createElement('div'); catalog.className = 'car-catalog';
+    for (const [model, title, price] of carCatalog) {
+      const card = document.createElement('div'); card.className = 'car-card';
+      const label = document.createElement('strong'); label.textContent = `${title} · $${price.toLocaleString('ru-RU')}`;
+      card.append(carPhoto(model, title), label, button('Купить', `car-buy|${model}`)); catalog.appendChild(card);
+    }
+    body.appendChild(catalog);
+    const mopeds = document.createElement('div'); mopeds.className = 'row';
+    mopeds.append(button('Купить Faggio', 'buy', '$2500'), button('Забрать мопед', 'spawn'));
+    body.appendChild(mopeds);
+    return;
+  }
+  const summary = document.createElement('p');
+  summary.textContent = `Машин в гараже: ${carState.total}. Выбери машину для управления.`;
+  body.appendChild(summary);
+  const list = document.createElement('div'); list.className = 'car-garage';
+  for (const car of carState.cars) {
+    const tile = button(`#${car.id} · ${carName(car.model)}`, `car-select|${car.id}`,
+      `Пробег: ${car.mileage} км · Топливо: ${car.fuel} л`);
+    tile.classList.toggle('selected', car.id === carState.selectedId);
+    list.appendChild(tile);
+  }
+  if (!carState.total) list.textContent = 'Автомобилей пока нет. Открой «Купить авто» и выбери первую машину.';
+  body.appendChild(list);
+  const pages = document.createElement('div'); pages.className = 'row car-pages';
+  if (carState.page > 0) pages.appendChild(button('← Назад', `car-page|${carState.page - 1}`));
+  if ((carState.page + 1) * 8 < carState.total) pages.appendChild(button('Дальше →', `car-page|${carState.page + 1}`));
+  body.appendChild(pages);
+  if (!carState.selectedId) return;
+  const selected = carState.cars.find(car => car.id === carState.selectedId);
+  const status = document.createElement('div'); status.className = 'stat';
+  status.textContent = `Выбрана: ${selected ? carName(selected.model) : `машина #${carState.selectedId}`} · ${carState.active ? 'на улице' : 'в гараже'}`;
+  body.appendChild(status);
+  const actions = document.createElement('div'); actions.className = 'row car-actions';
+  actions.append(button('Выдать рядом', 'car-spawn'), button('Отметить на карте', 'car-pin'), button('Припарковать', 'car-park'));
+  body.appendChild(actions);
+  const sell = button('Продать государству', '', 'Возврат 50% стоимости'); sell.classList.add('danger-tile');
+  sell.onclick = () => { if (window.confirm('Продать выбранный автомобиль государству за половину цены?')) send('car-sell'); };
+  body.appendChild(sell);
+}
+
+function renderCarList(payload) {
+  const [page, total, selectedId, active, rows = ''] = String(payload).split('|');
+  carState = {
+    page: Math.max(0, Number(page) || 0), total: Math.max(0, Number(total) || 0),
+    selectedId: Number(selectedId) || 0, active: active === '1',
+    cars: rows.split(';').filter(Boolean).map(row => {
+      const [id, model, mileage, fuel] = row.split(',').map(Number);
+      return { id, model, mileage, fuel };
+    }).filter(car => Number.isInteger(car.id) && car.id > 0)
+  };
+  renderCarView();
+}
+
 function renderHouseList(payload) {
   const [pageText, totalText, rows = ''] = String(payload).split('|');
   const list = document.getElementById('house-list');
@@ -289,6 +368,7 @@ if (bridge && bridge.on) {
   bridge.on('panel:state', render);
   bridge.on('house:list', renderHouseList);
   bridge.on('house:detail', renderHouseDetail);
+  bridge.on('cars:list', renderCarList);
 }
 else render('4|developer|1|78|1|0|500|0|5|0|1|1|0|0|1|3|7260|0|0');
 
