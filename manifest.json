@@ -525,6 +525,349 @@
       "size": 413,
       "sha256": "90a3cd1672f00a275b2a2d848a2e1cb5fc2db5ed203fe3e993ebc2ab155863e4",
       "platform": "windows"
+    },
+    {
+      "path": "$fastman92limitAdjuster.asi",
+      "url": "client/vehicle612/$fastman92limitAdjuster.asi",
+      "size": 11273728,
+      "sha256": "323f552c167ad705310118b5fcce91d3af4004016c11112a1a83cf4711c908ed",
+      "platform": "windows"
+    },
+    {
+      "path": "data/gtasa_vehicleAudioSettings.cfg",
+      "url": "client/vehicle612/data/gtasa_vehicleAudioSettings.cfg",
+      "size": 46772,
+      "sha256": "f589220bc193144e7c8034927f5929d1030f5b8bc8228ae1e530cbcddac0886b",
+      "platform": "windows"
+    },
+    {
+      "path": "DllTricks.dll",
+      "url": "client/vehicle612/DllTricks.dll",
+      "size": 33792,
+      "sha256": "c0b0233dc7fd149e03b8aa70a5797430e06e4799a88e741632e03338882f9c40",
+      "platform": "windows"
+    },
+    {
+      "path": "fastman92limitAdjuster_GTASA.ini",
+      "url": "client/vehicle612/fastman92limitAdjuster_GTASA.ini",
+      "size": 100,
+      "sha256": "44e27a83f872e3349067cfb801f0bb3ca61ee55286c4acf6b2e2f16836f1739d",
+      "platform": "windows"
+    },
+    {
+      "path": "FLA-LICENSE.txt",
+      "url": "client/vehicle612/FLA-LICENSE.txt",
+      "size": 1080,
+      "sha256": "d8ee103fd893036c797e51d90ddbca179c0b480763204618707dfc20bef9d1c3",
+      "platform": "windows"
+    },
+    {
+      "path": "JooVehicle612.asi",
+      "url": "client/vehicle612/JooVehicle612.asi",
+      "size": 72704,
+      "sha256": "998790ef83d6dcb6be3a6344b1d2b702243e2b5fdfa3c74672f12a9b8d5870a7",
+      "platform": "windows"
+    },
+    {
+      "path": "MinHook.x86.dll",
+      "url": "client/vehicle612/MinHook.x86.dll",
+      "size": 14848,
+      "sha256": "1524fedc94de76295196f1efaa9380a77f743551fe51bcf942c14be32519d585",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/CHANGELOG.md",
+      "url": "client/vehicle612/modloader/.data/CHANGELOG.md",
+      "size": 13035,
+      "sha256": "c658dc51a6915e8263c5b009f4a5126ec0459753fe9fba3659ada87f01601ee8",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/Command Line Arguments.md",
+      "url": "client/vehicle612/modloader/.data/Command Line Arguments.md",
+      "size": 1187,
+      "sha256": "4666450ff83a215caf6cdc22021df7cd24b488e1c707ccd0fbd2b4cad19f560e",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/config.ini.0",
+      "url": "client/vehicle612/modloader/.data/config.ini.0",
+      "size": 977,
+      "sha256": "8d0ad9d6ba4362d270b0d8604d9865cee8ffa185415499327ddd075567a33ebf",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/Leia-me.md",
+      "url": "client/vehicle612/modloader/.data/Leia-me.md",
+      "size": 3717,
+      "sha256": "f846687faf463bc42f21053efc565b6ad3a52d4dc39d7bfc36d5219d3bc04ccc",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/LICENSE",
+      "url": "client/vehicle612/modloader/.data/LICENSE",
+      "size": 1135,
+      "sha256": "fdd80441e323a3ef4df8e47673b1e4cb4a90b54eb3ac0478dad1e69ab19c2d76",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/licenses/boost.txt",
+      "url": "client/vehicle612/modloader/.data/licenses/boost.txt",
+      "size": 1539,
+      "sha256": "00ad852a3b23b6debd5f770b64214d84ac2bd3e9bc4d28180d246106984b388b",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/licenses/cereal.txt",
+      "url": "client/vehicle612/modloader/.data/licenses/cereal.txt",
+      "size": 1741,
+      "sha256": "d193d8bde2c5fdc87c957841cb2c219faa9a139d510b14787da779a9b6432442",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/licenses/tinympl.txt",
+      "url": "client/vehicle612/modloader/.data/licenses/tinympl.txt",
+      "size": 1564,
+      "sha256": "ff9638022eaa2119a4d5c973d4961b7e47de69c7247ba0aa539fa8efa1207f7a",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/licenses/utf8-cpp.txt",
+      "url": "client/vehicle612/modloader/.data/licenses/utf8-cpp.txt",
+      "size": 1524,
+      "sha256": "c0aa239fbb34c870f73cff1ea03a170a5c25b8b2dbe5c068dda04a6a2086f49f",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/modloader.ini.0",
+      "url": "client/vehicle612/modloader/.data/modloader.ini.0",
+      "size": 1228,
+      "sha256": "4a4f8fc15a496a5e39a9bf3b617685a29e8c7b326a6565514b2d63e5effd8695",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.asi.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.asi.dll",
+      "size": 292864,
+      "sha256": "f3217d82ac6f036ea6ad7d059cdd2e0b693210f44de55b62cd1c0285864d9c10",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.asi.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.asi.md",
+      "size": 508,
+      "sha256": "91d62f0c7afb4d3088e05b6d609086221ef81cad2249d5fe0ff219e4157ee8b2",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.bank.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.bank.dll",
+      "size": 269312,
+      "sha256": "cace891a95b87e4a0fb5c886acc69c992cc64fbed495140bf839e4e4655922b1",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.bank.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.bank.md",
+      "size": 927,
+      "sha256": "60084b7e4ef6e5dd5372f8df3952f0ea02d6c8ff375164b6acbd35c4dd676371",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.data.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.data.dll",
+      "size": 3436544,
+      "sha256": "8f11cf187ee86e82b6de233ef29feb1d13e3049ce8960e7a2f7549c51774ba13",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.data.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.data.md",
+      "size": 3665,
+      "sha256": "9294181ca7743f28c078ca13eb259338b2ef74661002a24c92f7a11b70d70f25",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.dmaudio.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.dmaudio.dll",
+      "size": 165376,
+      "sha256": "443356fb14a416f44771f82c1ac2a034ba5ebabb14225ce0355cb0f953141c2b",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.dmaudio.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.dmaudio.md",
+      "size": 455,
+      "sha256": "3ced8a3db990f25a61df4fc84d82986bb2b805d3c2d055d17dc2a59b645f0fc4",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.fx.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.fx.dll",
+      "size": 353280,
+      "sha256": "49a178cf6250c7f3aced363438000f1db9d8a5787b55225896965bcb6c618f75",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.fx.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.fx.md",
+      "size": 392,
+      "sha256": "500688ac03414bdd17e8d084405b059953dff8ba0e71e8d46009bfb798484f0c",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.movies.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.movies.dll",
+      "size": 157696,
+      "sha256": "92269636092b8af2c61dbdd9907f9e704745203f5c8b966fd3f2a141e5045e62",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.movies.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.movies.md",
+      "size": 400,
+      "sha256": "94875bccd5db51562c8bba69e8df96a4769285b7cd84b3cd32ad0a8073b9ed41",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.scm.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.scm.dll",
+      "size": 155648,
+      "sha256": "a24381e1c782f45f69e4bf53811cea22a0b021fe049a72ba106d0396fe4be1c9",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.scm.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.scm.md",
+      "size": 384,
+      "sha256": "294939ab3ec2083d6928f853286c10ce62ac69eb9e212023f4e8cdd43e869798",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.sprites.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.sprites.dll",
+      "size": 452096,
+      "sha256": "dc4b337e01792abe63eda4c3a893dc38a83ab304f2730b98353e944557277893",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.sprites.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.sprites.md",
+      "size": 568,
+      "sha256": "0beda69fa492540902619bdd1f41b6878c61448c84755e13ec9fb2dbd64fbfed",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.stream.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.stream.dll",
+      "size": 539136,
+      "sha256": "b65afd93c4be2a3d6f4b996a1479a8107cff430938adf0e42336521b395ad196",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.stream.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.stream.md",
+      "size": 1449,
+      "sha256": "69691f4b501abd2b7d815d83e04019d01906c5afd935055afdfb00d17f7f850e",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.text.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.text.dll",
+      "size": 187904,
+      "sha256": "b44987532eebb4f99e65ba4e5c776ee46a33c80ff8611902dbb7e4ecb5dc6cb8",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.text.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.text.md",
+      "size": 426,
+      "sha256": "2df452bc48dfedec0f8220baa2fbfc04f5ab81b19878584c6cdfcd64639feee5",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.tracks.dll",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.tracks.dll",
+      "size": 190464,
+      "sha256": "5d9080075b77d872146318573f97f1de757b32a54aa02600cb33e89c7ba5a052",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins/gta3/std.tracks.md",
+      "url": "client/vehicle612/modloader/.data/plugins/gta3/std.tracks.md",
+      "size": 469,
+      "sha256": "e4881ffdc037d2697fd18f4dc7979046b96974e885b4b7305d37a6c491824a9c",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/plugins.ini.0",
+      "url": "client/vehicle612/modloader/.data/plugins.ini.0",
+      "size": 592,
+      "sha256": "2d534da354961d3c285e8cf11545476efd276ccb1d8b314f5f2659185f9c9bdb",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/Profiles.md",
+      "url": "client/vehicle612/modloader/.data/Profiles.md",
+      "size": 4191,
+      "sha256": "0dcaa417c75043aa6fca542b55543c2fc20508b2cd7ac9773e82f49f33462193",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/Readme.md",
+      "url": "client/vehicle612/modloader/.data/Readme.md",
+      "size": 3562,
+      "sha256": "8c1db2e0addaf1feb1481f34d0f192ecdd44cf77d9c2fd43d10bee95d380ac4e",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/.data/text/1033/menu.fxt",
+      "url": "client/vehicle612/modloader/.data/text/1033/menu.fxt",
+      "size": 1379,
+      "sha256": "89e38b1ce8136187631fe44f6e15af89a4de9d1a3b926d713c2aabc18319d561",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/JooRP-Minsk/minsk.dff",
+      "url": "client/vehicle612/modloader/JooRP-Minsk/minsk.dff",
+      "size": 5011456,
+      "sha256": "e68af3bb5156144e3899b8287ab36bc437c3bc2e39daba91bd7466b5843e4465",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/JooRP-Minsk/minsk.txd",
+      "url": "client/vehicle612/modloader/JooRP-Minsk/minsk.txd",
+      "size": 37160,
+      "sha256": "5fa8b71e5a5d17e979330996be8130095026484ef23eedd22bd6fedfc6a24575",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader/JooRP-Minsk/vehicles.ide",
+      "url": "client/vehicle612/modloader/JooRP-Minsk/vehicles.ide",
+      "size": 95,
+      "sha256": "d7644c2dc6de65c89dfdb625f72aa7cd9a12b7a673ee19eef05d3ddbd48d209e",
+      "platform": "windows"
+    },
+    {
+      "path": "MODLOADER-LICENSE.txt",
+      "url": "client/vehicle612/MODLOADER-LICENSE.txt",
+      "size": 1135,
+      "sha256": "fdd80441e323a3ef4df8e47673b1e4cb4a90b54eb3ac0478dad1e69ab19c2d76",
+      "platform": "windows"
+    },
+    {
+      "path": "modloader.asi",
+      "url": "client/vehicle612/modloader.asi",
+      "size": 673280,
+      "sha256": "64924c98bdd76b480db2a71a3cda7297620e78307f2cf3b9fe433d80807faa26",
+      "platform": "windows"
+    },
+    {
+      "path": "zlib1.dll",
+      "url": "client/vehicle612/zlib1.dll",
+      "size": 107520,
+      "sha256": "42967a768f341d9ce5174eb38a4d63754c3c41739e7d88f4e39cd7354c1fac71",
+      "platform": "windows"
     }
   ]
 }
