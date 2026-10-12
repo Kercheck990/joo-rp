@@ -4,6 +4,7 @@ const caption = document.getElementById('caption');
 const carCatalog = [
   [410, 'Manana', 12000], [466, 'Glendale', 22000], [496, 'Blista Compact', 16000],
   [400, 'Landstalker', 38000], [562, 'Elegy', 68000], [402, 'Buffalo', 75000],
+  [468, 'Sanchez', 19000],
 ];
 let carView = 'garage';
 
@@ -60,6 +61,34 @@ function errorBox() {
   element.className = 'error';
   content.appendChild(element);
   return element;
+}
+
+const clientPrefs = {
+  scale: { values: [80, 100, 120, 140], label: 'Масштаб HUD', suffix: '%' },
+  opacity: { values: [40, 60, 80, 100], label: 'Прозрачность HUD', suffix: '%' },
+  speedometer: { values: [1, 0], label: 'Спидометр', names: ['включён', 'выключен'] },
+  effects: { values: [1, 0], label: 'Анимации интерфейса', names: ['включены', 'выключены'] },
+  engineVolume: { values: [0, 25, 50, 75, 100], label: 'Звук Минска', suffix: '%' }
+};
+
+function renderClientPrefs() {
+  const target = document.getElementById('client-prefs');
+  if (!target) return;
+  target.replaceChildren();
+  for (const [key, setting] of Object.entries(clientPrefs)) {
+    const raw = localStorage.getItem(`joo.${key}`);
+    const stored = raw === null ? NaN : Number(raw);
+    const index = setting.values.includes(stored) ? setting.values.indexOf(stored) : (key === 'engineVolume' ? 3 : key === 'opacity' ? 3 : key === 'scale' ? 1 : 0);
+    const value = setting.names ? setting.names[index] : `${setting.values[index]}${setting.suffix}`;
+    const item = button(`${setting.label}: ${value}`, '');
+    item.onclick = () => {
+      const next = setting.values[(index + 1) % setting.values.length];
+      localStorage.setItem(`joo.${key}`, String(next));
+      renderClientPrefs();
+    };
+    item.dataset.preference = key;
+    target.appendChild(item);
+  }
 }
 
 function render(payload) {
@@ -195,9 +224,14 @@ function render(payload) {
       break;
     }
     case 6:
-      heading('Настройки', 'Параметры игры, которыми можно управлять на сервере.');
+      heading('Настройки', 'Время и погода сохраняются на сервере. Графика интерфейса и звук сохраняются на этом устройстве.');
       row(button(`Локальный чат: ${chat === '1' ? 'вкл' : 'выкл'}`, 'chat'), button(`Подсказки: ${hints === '1' ? 'вкл' : 'выкл'}`, 'hints'));
       row(button(`Погода: ${['обычная', 'ясно', 'туман'][Number(weather)] || 'обычная'}`, 'weather'), button(`Время: ${['обычное', 'день', 'ночь'][Number(time)] || 'обычное'}`, 'time'));
+      const clientSettings = document.createElement('div');
+      clientSettings.id = 'client-prefs';
+      clientSettings.className = 'row';
+      content.appendChild(clientSettings);
+      renderClientPrefs();
       break;
     case 7: {
       heading('Написать админам', 'Опиши проблему одним сообщением.');
