@@ -269,12 +269,21 @@ function render(payload) {
         ['Банк', 'gps:bank', 'Счёт и наличные'],
         ['Мопеды', 'gps:moped', 'Покупка и выдача мопеда'],
         ['Заправка', 'gps:fuel', 'Топливо для транспорта'],
-        ['Мои дома', 'gps:houses', 'Выбор дома и отметка на карте']
+        ['Все дома', 'gps:houses', 'Свободные и занятые дома сервера']
       ];
       const list = document.createElement('div'); list.className = 'gps-list';
       for (const [title, action, description] of locations) list.appendChild(button(title, action, description));
       content.appendChild(list);
       row(button('Убрать метку', 'gps:clear'));
+      break;
+    }
+    case 14: {
+      heading('GPS · дома', 'Выбери дом — его адрес появится на карте. Зелёный дом свободен, красный занят.');
+      const list = document.createElement('div'); list.id = 'gps-houses'; list.className = 'gps-list';
+      list.textContent = 'Загружаем дома…'; content.appendChild(list);
+      const pages = document.createElement('div'); pages.id = 'gps-house-pages'; pages.className = 'row';
+      content.appendChild(pages);
+      row(button('← Все места', 'gps:back'));
       break;
     }
   }
@@ -381,10 +390,31 @@ function renderHouseDetail(payload) {
   detail.textContent = `Дом №${id} · стоимость $${Number(price).toLocaleString('ru-RU')} · координаты ${x}, ${y}, ${z}`;
 }
 
+function renderGpsHouses(payload) {
+  const [pageText, totalText, rows = ''] = String(payload).split('|');
+  const list = document.getElementById('gps-houses');
+  const pages = document.getElementById('gps-house-pages');
+  if (!list || !pages) return;
+  list.replaceChildren(); pages.replaceChildren();
+  const page = Math.max(0, Number(pageText) || 0);
+  const total = Math.max(0, Number(totalText) || 0);
+  if (!total) { list.textContent = 'Домов на сервере пока нет.'; return; }
+  for (const entry of rows.split(';').filter(Boolean)) {
+    const [id, price, occupied] = entry.split(',');
+    list.appendChild(button(`Дом №${id}`, `gps:house|${id}`,
+      `${occupied === '1' ? 'Занят' : 'В продаже'} · $${Number(price).toLocaleString('ru-RU')}`));
+  }
+  if (page > 0) pages.appendChild(button('← Назад', `gps:house-page|${page - 1}`));
+  if ((page + 1) * 8 < total) pages.appendChild(button('Дальше →', `gps:house-page|${page + 1}`));
+  const count = document.createElement('span'); count.className = 'house-count';
+  count.textContent = `Всего домов: ${total}`; pages.appendChild(count);
+}
+
 if (bridge && bridge.on) {
   bridge.on('panel:state', render);
   bridge.on('house:list', renderHouseList);
   bridge.on('house:detail', renderHouseDetail);
+  bridge.on('gps:houses', renderGpsHouses);
   bridge.on('cars:list', renderCarList);
 }
 else render('4|developer|1|78|1|0|500|0|5|0|1|1|0|0|1|3|7260|0|0');
