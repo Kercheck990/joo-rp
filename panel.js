@@ -259,6 +259,24 @@ function render(payload) {
       content.appendChild(sell);
       break;
     }
+    case 13: {
+      heading('GPS · Лос-Сантос', 'Выбери место — на карте появится зелёная отметка. Рабочий маршрут сохранится.');
+      const locations = [
+        ['Спавн', 'gps:spawn', 'Точка появления твоего уровня'],
+        ['Мэрия', 'gps:cityhall', 'Работа курьера, уборщика и таксиста'],
+        ['Автосалон', 'gps:dealer', 'Покупка автомобилей'],
+        ['Больница', 'gps:hospital', 'Больница Лос-Сантоса'],
+        ['Банк', 'gps:bank', 'Счёт и наличные'],
+        ['Мопеды', 'gps:moped', 'Покупка и выдача мопеда'],
+        ['Заправка', 'gps:fuel', 'Топливо для транспорта'],
+        ['Мои дома', 'gps:houses', 'Выбор дома и отметка на карте']
+      ];
+      const list = document.createElement('div'); list.className = 'gps-list';
+      for (const [title, action, description] of locations) list.appendChild(button(title, action, description));
+      content.appendChild(list);
+      row(button('Убрать метку', 'gps:clear'));
+      break;
+    }
   }
 }
 
