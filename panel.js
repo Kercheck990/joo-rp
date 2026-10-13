@@ -97,6 +97,11 @@ function render(payload) {
     adminPasswordSet = '0', punishments = '0', adminSeconds = '0', houseId = '0', housePrice = '0', carModel = '0', job = '0', taxiPhase = '0', faction = '0', factionRank = '0'] = state;
   const access = Number(admin);
 
+  if (Number(mode) >= 20 && Number(mode) <= 32) {
+    heading('Личная жизнь', 'Загружаем данные персонажа…');
+    return;
+  }
+
   switch (Number(mode)) {
     case 1:
       heading('Анимации', 'Выбери действие. Остановить можно здесь или командой /anim.');
@@ -323,6 +328,128 @@ function render(payload) {
   }
 }
 
+const lifeTitles = [
+  'Ежедневная награда', 'Паспорт', 'Лицензии', 'Репутация', 'Достижения',
+  'Задачи', 'Личный дневник', 'Контакты', 'Объявления', 'Аксессуары',
+  'Страховка', 'Домашние услуги', 'Профессии'
+];
+const lifeJobs = [
+  'Курьер', 'Почтальон', 'Доставка еды', 'Водитель автобуса', 'Санитар',
+  'Автомеханик', 'Электрик', 'Фермер', 'Шахтёр', 'Рыбак', 'Охранник', 'Пожарный'
+];
+
+function lifeInfo(value) {
+  const item = document.createElement('div');
+  item.className = 'stat';
+  item.textContent = value;
+  content.appendChild(item);
+}
+
+function lifeTextAction(placeholder, label, prefix, maxLength = 60) {
+  const input = field(placeholder);
+  input.maxLength = maxLength;
+  const submit = button(label, '');
+  submit.onclick = () => {
+    const value = input.value.trim().replace(/[|\r\n]/g, ' ');
+    if (value) send(prefix + value);
+  };
+  content.appendChild(submit);
+}
+
+function renderLife(payload) {
+  const [modeText, dailyText, licensesText, repText, repGivenText,
+    achievementsText, questText, questProgressText, journal, contact,
+    adTimeText, accessoryText, insuranceText, utilityText, totalText,
+    claimText, todayText] = String(payload).split('|');
+  const mode = Number(modeText), today = Number(todayText);
+  if (mode < 20 || mode > 32) return;
+  const licenses = Number(licensesText), achievements = Number(achievementsText);
+  const quest = Number(questText), progress = Number(questProgressText);
+  const total = Number(totalText), utility = Number(utilityText);
+  heading(lifeTitles[mode - 20], 'Joo RP · твой персонаж');
+  const nav = document.createElement('div');
+  nav.className = 'life-nav';
+  lifeTitles.forEach((title, index) => {
+    const tile = button(title, `life:open|${index + 20}`);
+    if (index + 20 === mode) tile.classList.add('selected');
+    nav.appendChild(tile);
+  });
+  content.appendChild(nav);
+  const error = errorBox();
+  error.id = 'life-error';
+  switch (mode) {
+    case 20:
+      lifeInfo(Number(dailyText) === today ? 'Сегодня награда уже получена.' : 'Награда сегодня: $750.');
+      row(button('Получить награду', 'life:daily'));
+      break;
+    case 21:
+      lifeInfo('Паспорт содержит ник, статик и уровень. Покажи его игрокам в радиусе 8 метров.');
+      row(button('Показать паспорт', 'life:passport'));
+      break;
+    case 22:
+      lifeInfo(`Водительская: ${licenses & 1 ? 'есть' : 'нет'} · Рыболовная: ${licenses & 2 ? 'есть' : 'нет'}`);
+      row(button('Водительская · $1500', 'life:license|1'), button('Рыболовная · $500', 'life:license|2'));
+      break;
+    case 23:
+      lifeInfo(`Репутация: ${repText}. Рекомендовать другого игрока можно раз в день.`);
+      lifeTextAction('ID игрока', 'Рекомендовать', 'life:rep|', 4);
+      if (Number(repGivenText) === today) lifeInfo('Сегодня рекомендация уже использована.');
+      break;
+    case 24:
+      lifeInfo(`10 рейсов: ${total >= 10 ? 'готово' : `${total}/10`} · уровень 5 · свой дом.`);
+      row(button(achievements & 1 ? '10 рейсов ✓' : 'Награда $1000', 'life:achieve|1'),
+        button(achievements & 2 ? 'Уровень 5 ✓' : 'Награда $2000', 'life:achieve|2'),
+        button(achievements & 4 ? 'Дом ✓' : 'Награда $3000', 'life:achieve|3'));
+      break;
+    case 25:
+      lifeInfo(quest ? `Задача: ${lifeJobs[quest - 1]}, рейсы ${progress}/3.` : 'Выбери профессию и заверши три рейса. Награда $1200.');
+      if (quest && progress >= 3) row(button('Забрать награду', 'life:questclaim'));
+      else {
+        const jobs = document.createElement('div'); jobs.className = 'life-job-list';
+        lifeJobs.forEach((name, index) => jobs.appendChild(button(name, `life:quest|${index + 1}`)));
+        content.appendChild(jobs);
+      }
+      break;
+    case 26:
+      lifeInfo(journal || 'Записей пока нет. Дневник сохраняется между входами.');
+      lifeTextAction('Новая запись, до 60 символов', 'Сохранить запись', 'life:journal|');
+      break;
+    case 27:
+      lifeInfo(`Контакт: ${contact || 'нет'}. Сохрани игрока по ID, затем отправь SMS.`);
+      lifeTextAction('ID игрока', 'Сохранить контакт', 'life:contact|', 4);
+      if (contact) lifeTextAction('Сообщение контакту', 'Отправить SMS', 'life:message|');
+      break;
+    case 28:
+      lifeInfo('Объявление увидит весь сервер. Стоимость $75, интервал 5 минут.');
+      lifeTextAction('Текст объявления, 5–70 символов', 'Опубликовать', 'life:ad|', 70);
+      if (Number(adTimeText)) lifeInfo('Последняя публикация сохранена.');
+      break;
+    case 29:
+      lifeInfo(`Выбранный аксессуар: ${['нет', 'очки', 'кепка', 'рюкзак'][Number(accessoryText)] || 'нет'}. Сохраняется после выхода.`);
+      row(button('Без аксессуара', 'life:accessory|0'), button('Очки', 'life:accessory|1'),
+        button('Кепка', 'life:accessory|2'), button('Рюкзак', 'life:accessory|3'));
+      break;
+    case 30:
+      lifeInfo(`Полис: ${insuranceText === '1' ? 'активен' : 'не оформлен'}. Стоимость $800, выплата $600 после уничтожения личной машины.`);
+      row(button('Оформить полис', 'life:insurance'));
+      break;
+    case 31:
+      lifeInfo(utility === today ? 'Поездка домой оплачена, доступна один раз сегодня.' :
+        utility === -today ? 'Сегодня поездка домой уже использована.' : 'Поездка к своему дому: $150, один раз в день.');
+      row(button('Оплатить', 'life:utility'), button('Поехать домой', 'life:home'));
+      break;
+    case 32: {
+      lifeInfo(`Всего завершённых рейсов: ${total}. Бонус каждые 20 рейсов: ${Math.floor(total / 20) > Number(claimText) ? 'доступен' : 'пока недоступен'}.`);
+      row(button('Получить бонус $1000', 'life:workclaim'));
+      const jobs = document.createElement('div'); jobs.className = 'life-job-list';
+      lifeJobs.forEach((name, index) => jobs.appendChild(button(`${index + 1}. ${name}`, `life:jobpin|${index + 1}`, 'Отметить базу на карте')));
+      content.appendChild(jobs);
+      lifeInfo('У отмеченной базы используй /jobtake номер. Завершить смену: /quitjob.');
+      break;
+    }
+  }
+}
+
 let carState = { page: 0, total: 0, selectedId: 0, active: false, cars: [] };
 
 function carName(model) {
@@ -450,6 +577,11 @@ if (bridge && bridge.on) {
   bridge.on('house:detail', renderHouseDetail);
   bridge.on('gps:houses', renderGpsHouses);
   bridge.on('cars:list', renderCarList);
+  bridge.on('life:state', renderLife);
+  bridge.on('life:error', message => {
+    const error = document.getElementById('life-error');
+    if (error) error.textContent = String(message);
+  });
 }
 else render('4|developer|1|78|1|0|500|0|5|0|1|1|0|0|1|3|7260|0|0');
 
